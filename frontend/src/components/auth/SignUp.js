@@ -9,9 +9,9 @@ class SignUp extends Component {
 
     handleSubmit =  e => {
         e.preventDefault()
-            actions.signUp(this.state).then(user=> {
-                this.props.setUser({...user.data})  
-            }).catch(({ response }) => console.error(response.data));
+        actions.signUp(this.state).then(user=> { //axios.post('signup)
+            this.props.setUser({...user.data})  
+        }).catch(({ response }) => console.error(response.data));
     }
     render() {
         return (

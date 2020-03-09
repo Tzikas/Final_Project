@@ -20,7 +20,14 @@ const actions = {
   },
   logOut: async () => {
     return await service.get('/logout')
+  },
+  getPuppies: async () => {
+    return await axios.get("https://dog.ceo/api/breeds/image/random")
+  },
+  savePuppy: async (puppy) => {
+    return await service.post('/save-puppy', puppy)
   }
+
 };
 
 export default actions;

@@ -5,6 +5,7 @@ import NotFound from './components/404/NotFound.js';
 import SignUp from './components/auth/SignUp';
 import LogIn from './components/auth/LogIn';
 import Profile from './components/profile/Profile'
+import Puppies from './components/profile/Puppies'
 import actions from './services/index'
 
 class App extends Component {
@@ -37,11 +38,16 @@ class App extends Component {
           <Fragment>
            <NavLink onClick={this.logOut} to='/'>Log Out |</NavLink> 
            <NavLink to="/profile">Profile|</NavLink>
+           <NavLink to="/puppies">Puppies |</NavLink>
+
            </Fragment>
            :
            <Fragment>
            <NavLink to="/sign-up">Sign Up |</NavLink>
            <NavLink to="/log-in">Log In |</NavLink>
+           
+           <NavLink to="/puppies">Puppies |</NavLink>
+
            </Fragment>
           }
         
@@ -51,7 +57,8 @@ class App extends Component {
         <Route exact path="/sign-up" render={(props)=><SignUp {...props} setUser={this.setUser} />} />
         <Route exact path="/log-in" render={(props) => <LogIn {...props} setUser={this.setUser}/>} />
         <Route exact path="/profile" render={(props) => <Profile {...props} user={this.state}/>} />
-        
+        <Route exact path="/puppies" render={(props) => <Puppies {...props} user={this.state}/>} />
+
         <Route component={NotFound} />
       </Switch>
     </BrowserRouter>

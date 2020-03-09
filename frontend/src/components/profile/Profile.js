@@ -6,7 +6,7 @@ const Profile = (props) => {
     }   
     return (
         <div>
-            Profile
+            Profile HEyall!!!
             Welcome {props.user.email} !!! 
         </div>
     );
