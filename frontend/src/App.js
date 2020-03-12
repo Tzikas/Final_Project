@@ -7,6 +7,7 @@ import LogIn from './components/auth/LogIn';
 import Profile from './components/profile/Profile'
 import Puppies from './components/profile/Puppies'
 import actions from './services/index'
+import ImageUpload from './components/imageUpload/imageUpload';
 
 class App extends Component {
   
@@ -33,7 +34,7 @@ class App extends Component {
       {this.state.email}
       <nav>
         <NavLink to="/">Home |</NavLink>
-  
+        <NavLink to="/upload-the-image-page">|  Image Upload  | </NavLink>
         {this.state.email ? 
           <Fragment>
            <NavLink onClick={this.logOut} to='/'>Log Out |</NavLink> 
@@ -58,6 +59,9 @@ class App extends Component {
         <Route exact path="/log-in" render={(props) => <LogIn {...props} setUser={this.setUser}/>} />
         <Route exact path="/profile" render={(props) => <Profile {...props} user={this.state}/>} />
         <Route exact path="/puppies" render={(props) => <Puppies {...props} user={this.state}/>} />
+       
+       
+        <Route exact path="/upload-the-image-page" render={(props) => <ImageUpload {...props} user={this.state}/>} />
 
         <Route component={NotFound} />
       </Switch>

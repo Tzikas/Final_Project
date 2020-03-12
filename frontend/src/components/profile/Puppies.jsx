@@ -23,7 +23,7 @@ class Puppies extends Component {
             <div>
                 <h1>Puppies</h1>
                 <img src={this.state.puppy.message} />
-                <button onClick={this.handlePost} />
+                <button onClick={this.handlePost}>Add Puppy</button>
             </div>
         );
     }

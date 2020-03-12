@@ -26,6 +26,26 @@ const actions = {
   },
   savePuppy: async (puppy) => {
     return await service.post('/save-puppy', puppy)
+  },
+  getProfile: async () => {
+    return await service.get('/profile')
+  },
+  handleUpload: (theFile) => {  //The one that saves to cloudinary 
+    console.log('file in service: ', theFile)
+    return service.post('/upload', theFile)
+      .then(res => res.data)
+      .catch(err => console.error(err));
+  },
+
+  saveNewThing (image) { //The one that saves to your databse 
+    // console.log('new thing is: ', image)
+    return service.post('/image/create', image)
+      .then(res => res.data)
+      .catch(err => console.error(err));
+  },
+
+  getAllImages: async () => {
+    return await service.get('/all-images')
   }
 
 };

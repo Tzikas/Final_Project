@@ -1,6 +1,8 @@
 const express = require('express');
 const router = express.Router();
 const User = require('../models/User');
+const Puppy = require('../models/Puppy');
+
 const passport = require('../config/passport');
 
 router.post('/signup', (req, res, next) => {
@@ -35,9 +37,11 @@ router.get('/logout', (req, res, next) => {
 });
 
 router.get('/profile', isAuth, (req, res, next) => {
-  User.findById(req.user._id)
-    .then((user) => res.status(200).json({ user }))
-    .catch((err) => res.status(500).json({ err }));
+  Puppy.find({owner: req.user._id}).then(puppiesFromDB => {
+    User.findById(req.user._id)
+    .then((user) => res.status(200).json({ user: user , puppiesToFrontEnd: puppiesFromDB }))
+    .catch((err) => res.status(500).json({ err })); 
+  })
 });
 
 function isAuth(req, res, next) {
